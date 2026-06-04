@@ -1,0 +1,7 @@
+{
+  "operacja": "ZLACZENIE_I_FILTR",
+  "parametry": {
+    "wybranySektor": "Technologia",
+    "cenaMniejszaNiz": 250
+  }
+}
