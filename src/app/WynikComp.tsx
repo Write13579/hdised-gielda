@@ -22,10 +22,9 @@ export default function WynikComp({ price, currency }: WynikCompProps) {
   }, [router]);
 
   return (
-    <div>
-      <div>BTC-USD: </div>
+    <div className="flex flex-row mb-2">
       <div>
-        {price} {currency}
+        kurs BTC-USD irl: {price} {currency}
       </div>
     </div>
   );

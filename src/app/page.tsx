@@ -6,6 +6,8 @@ import {
   operacjaNajnizszyProcentSpolekNaLitereX,
   operacjaSektorCena,
 } from "./functions";
+import WynikComp from "./WynikComp";
+import yahooFinance from "yahoo-finance2";
 
 export default async function Home() {
   const query1 = readQuery1();
@@ -14,13 +16,6 @@ export default async function Home() {
 
   const allSpolki = await db.select().from(spolkiTables);
 
-  //   {
-  //   "operacja": "SEKTOR_CENA",
-  //   "parametry": {
-  //     "wybranySektor": "Technologia",
-  //     "cenaMniejszaNiz": 250
-  //   }
-  //   }
   const fullAnswer1 = await operacjaSektorCena(query1.query);
 
   const fullAnswer2 = await operacjaNajdrozszaSpolkaDzisiajKraj(query2.query);
@@ -29,9 +24,16 @@ export default async function Home() {
     query3.query,
   );
 
+  const yahooFinanceClient = new yahooFinance();
+  const btcQuote = await yahooFinanceClient.quote("BTC-USD");
+  const irlBtc = btcQuote.regularMarketPrice ?? 0;
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <div>
+          <WynikComp price={irlBtc} currency="USD" />
+        </div>
         <div className="border p-5 flex justify-center flex-col">
           <h1 className="mb-2">odpowiedz do twojego zapytania1:</h1>
           zapytanie: {query1.nazwaOperacji}:
