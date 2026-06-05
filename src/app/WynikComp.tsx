@@ -13,8 +13,12 @@ export default function WynikComp({ price, currency }: WynikCompProps) {
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      router.refresh();
-    }, 50000);
+      try {
+        router.refresh();
+      } catch (error) {
+        console.error("router.refresh error:", error);
+      }
+    }, 10000);
 
     return () => {
       window.clearInterval(intervalId);
