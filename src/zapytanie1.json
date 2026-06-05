@@ -1,5 +1,5 @@
 {
-  "operacja": "ZLACZENIE_I_FILTR",
+  "operacja": "SEKTOR_CENA",
   "parametry": {
     "wybranySektor": "Technologia",
     "cenaMniejszaNiz": 250

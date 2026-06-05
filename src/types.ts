@@ -3,5 +3,7 @@ export interface Query {
   parametry: {
     wybranySektor: string;
     cenaMniejszaNiz: number;
+    kraj: string;
+    naLitere: string;
   };
 }
